@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashu Dhall - Strategic Vision for Zayo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Professional Corporate (White, Slate Gray, Accent Blue) -->
+    <!-- Application Structure Plan: The SPA uses a vertical, single-page scrolling layout to mirror the narrative flow of the original pitch deck. It starts with a strong hero section (Slide 1), followed by a two-column layout to present the core challenge (Slide 2). The highlight is a recreated 'As-Is' architecture diagram using HTML/CSS to visualize the process flow (Slide 3). The final section (Slide 4) features an interactive accordion system, allowing users to click on Zayo's needs to reveal the candidate's corresponding experience. This structure turns the static deck into an engaging, explorable narrative, emphasizing the candidate's problem-solving approach. -->
+    <!-- Visualization & Content Choices: Report Info: Pitch Deck content. Goal: Present the candidate's strategic analysis and qualifications interactively. Viz/Presentation: Section 1 (Slide 2) uses a two-column layout with icons. Section 2 (Slide 3) recreates the architecture diagram using structured HTML/CSS divs, flexbox, and grid, with hover effects for interactivity. Section 3 (Slide 4) uses a JavaScript-powered accordion to link Zayo's needs to the candidate's skills. Justification: This approach transforms the static deck into an engaging narrative, highlighting the candidate's structured thinking and problem-solving abilities. Library/Method: Vanilla JS for interactions, Tailwind CSS for layout. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .section-title {
+            color: #1e3a8a; /* blue-800 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .accordion-button {
+            transition: background-color 0.3s ease;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease;
+            padding: 0 1.5rem;
+        }
+        .accordion-content.open {
+            max-height: 500px;
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+        .arch-box {
+            border: 1px solid #cbd5e1; /* coolGray-300 */
+            background-color: #f1f5f9; /* coolGray-100 */
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            color: #334155; /* coolGray-700 */
+        }
+        .arch-layer {
+            border: 2px solid #e2e8f0; /* coolGray-200 */
+            background-color: rgba(248, 250, 252, 0.5); /* coolGray-50 with opacity */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .arch-connector {
+            position: relative;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        .arch-connector::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -0.5rem;
+            bottom: -0.5rem;
+            width: 2px;
+            background-color: #94a3b8; /* coolGray-400 */
+            transform: translateX(-50%);
+        }
+        .arch-connector-arrow::after {
+            content: '▼';
+            color: #94a3b8; /* coolGray-400 */
+            font-size: 1rem;
+            position: absolute;
+            left: 50%;
+            bottom: -1rem;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <!-- Slide 1: Title Section -->
+    <header class="bg-slate-800 text-white text-center py-20 sm:py-24 md:py-32">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">Architecting Zayo's Next-Generation Platform</h1>
+            <p class="mt-4 text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">A Strategic Vision for System Rationalization and Value Creation</p>
+            <p class="mt-8 text-xl font-semibold text-blue-300">Ashu Dhall</p>
+            <p class="text-md text-slate-400">My understanding of Zayo Opportunity</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <!-- Slide 2: The Core Challenge -->
+        <section class="my-12 md:my-16">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">The Core Challenge</h2>
+            <p class="text-center text-slate-500 mb-10 max-w-4xl mx-auto">Zayo's premier assets and market leadership are constrained by a fractured technical foundation inherited from years of growth through acquisition.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card p-6 md:p-8">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">Zayo's Strength: A Diverse Portfolio</h3>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4">📡</span>
+                            <div><strong class="font-semibold text-slate-700">Dark Fiber:</strong> The foundational asset—leasing raw, unlit fiber infrastructure.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4">💡</span>
+                            <div><strong class="font-semibold text-slate-700">Wavelengths:</strong> Providing managed, lit-fiber capacity at specific speeds.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4">🌐</span>
+                            <div><strong class="font-semibold text-slate-700">Private Data Networks (WAN):</strong> Creating secure, private networks for enterprises.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4">↔️</span>
+                            <div><strong class="font-semibold text-slate-700">Ethernet & DIA:</strong> Offering flexible, high-performance connectivity.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card p-6 md:p-8 border-2 border-amber-400 bg-amber-50">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">The Central Problem: Systemic Complexity</h3>
+                    <div class="text-slate-600 space-y-2">
+                        <p><strong class="font-semibold text-slate-700">A Tangled Web from M&A:</strong> Successive acquisitions have created a web of redundant systems for:</p>
+                        <ul class="list-disc list-inside space-y-2 pl-2 mt-2">
+                           <li><strong class="font-semibold text-slate-700">Network Inventory:</strong> No single source of truth for fiber assets.</li>
+                           <li><strong class="font-semibold text-slate-700">Service Provisioning:</strong> Manual, "swivel-chair" workflows.</li>
+                           <li><strong class="font-semibold text-slate-700">Quoting & Billing:</strong> Inconsistent pricing and error-prone invoicing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-8 p-6 md:p-8 bg-blue-800 text-white">
+                <h3 class="font-bold text-xl mb-2 text-blue-200">The Problem Statement for the Business Architect:</h3>
+                <p class="text-lg">How do we rationalize the complex web of inventory, provisioning, and billing systems acquired over years to create a single, efficient engine that can deliver *any* of these products seamlessly, starting with the core Dark Fiber capability?</p>
+            </div>
+        </section>
+
+        <!-- Slide 3a: Conceptual Architecture Blueprint -->
+        <section class="my-12 md:my-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">Conceptual "As-Is" Blueprint</h2>
+            <p class="text-center text-slate-500 mb-10 max-w-4xl mx-auto">This high-level blueprint shows how a single order must navigate a complex BSS/OSS layer where systems clash, causing operational friction.</p>
+
+            <div class="w-full overflow-x-auto p-4">
+                <div class="min-w-[1000px] mx-auto">
+                    <!-- Layer 1 -->
+                    <div class="arch-layer">
+                        <h4 class="font-bold text-center text-slate-500 mb-4">Layer 1: Customer & Product Portfolio</h4>
+                        <div class="grid grid-cols-5 gap-4">
+                            <div class="arch-box">Dark Fiber</div>
+                            <div class="arch-box">Wavelengths</div>
+                            <div class="arch-box">Private Networks</div>
+                            <div class="arch-box">Ethernet</div>
+                            <div class="arch-box">DIA</div>
+                        </div>
+                    </div>
+
+                    <div class="arch-connector arch-connector-arrow"></div>
+
+                    <!-- Layer 2 -->
+                    <div class="arch-layer">
+                        <h4 class="font-bold text-center text-slate-500 mb-4">Layer 2: Business Process & Engagement</h4>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="arch-box">Salesforce (CRM)</div>
+                            <div class="arch-box bg-blue-100 border-blue-300">Product Catalog</div>
+                            <div class="arch-box">Tranzact Portal</div>
+                        </div>
+                    </div>
+
+                     <div class="arch-connector arch-connector-arrow"></div>
+
+                    <!-- Layer 3 -->
+                    <div class="arch-layer">
+                        <h4 class="font-bold text-center text-slate-500 mb-4">Layer 3: The BSS/OSS Engine Room</h4>
+                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div class="arch-box"><strong>Order Management</strong><br>(e.g., Netcracker)</div>
+                            <div class="arch-box bg-red-100 border-red-300"><strong>Service Provisioning</strong><br>Modern + Legacy Tools</div>
+                            <div class="arch-box bg-red-100 border-red-300"><strong>Network Inventory</strong><br>Multiple, siloed systems</div>
+                            <div class="arch-box"><strong>Service Assurance</strong><br>(e.g., Splunk)</div>
+                        </div>
+                    </div>
+
+                     <div class="arch-connector arch-connector-arrow"></div>
+
+                    <!-- Layer 4 -->
+                    <div class="arch-layer">
+                        <h4 class="font-bold text-center text-slate-500 mb-4">Layer 4: Enterprise & Corporate Systems</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="arch-box">Oracle EBS<br>Billing & Financials</div>
+                            <div class="arch-box">Workday<br>Human Capital Mgmt</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3b: Detailed Architecture Diagram -->
+        <section class="my-12 md:my-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">Detailed "As-Is" Process Flow</h2>
+            <p class="text-center text-slate-500 mb-10 max-w-4xl mx-auto">This detailed process flow illustrates the specific system interactions and dependencies that contribute to the current operational complexity.</p>
+
+            <div class="card p-4 max-w-5xl mx-auto">
+                <img src="Zayo Business Architecture Draft.jpg" alt="Zayo Business Architecture Diagram" class="w-full h-auto rounded-md">
+            </div>
+            <p class="text-center text-sm text-slate-500 mt-4">
+                <strong>Note:</strong> For the image to display, ensure the image file named "Zayo Business Architecture Draft.jpg" is in the same folder as this HTML file.
+            </p>
+
+        </section>
+
+        <!-- Slide 4: The Solution: Your Experience -->
+        <section class="my-12 md:my-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">A Proven Toolkit to Drive Zayo's Transformation</h2>
+            <p class="text-center text-slate-500 mb-10 max-w-4xl mx-auto">My experience directly maps to Zayo's core needs, providing a proven blueprint for success.</p>
+
+            <div id="accordion-container" class="space-y-4 max-w-4xl mx-auto">
+                <!-- Accordion Item 1 -->
+                <div class="card overflow-hidden">
+                    <button class="accordion-button w-full text-left p-6 flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span class="text-lg font-semibold text-slate-800">Rationalize Legacy Systems</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-600"><strong class="font-semibold text-slate-800">Strategic Application Rationalization (UHG/Optum):</strong> I have direct, recent experience leading the assessment of 45+ acquired clinical data systems to create a consolidation roadmap. This is the exact discovery process Zayo needs for its OSS/BSS landscape.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="card overflow-hidden">
+                    <button class="accordion-button w-full text-left p-6 flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span class="text-lg font-semibold text-slate-800">Build a Modern, Scalable Platform</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-600"><strong class="font-semibold text-slate-800">Future-Ready Architecture (Splunk, TransCanada):</strong> I have 25 years of data management experience, including creating cloud-native (AWS, Azure, GCP), API-first, and event-driven architectures. I will ensure the new platform is built for agility and the future, not just to solve past problems.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="card overflow-hidden">
+                    <button class="accordion-button w-full text-left p-6 flex justify-between items-center bg-white hover:bg-slate-50">
+                        <span class="text-lg font-semibold text-slate-800">Operate with a Lean, Value-Driven Approach</span>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-slate-600"><strong class="font-semibold text-slate-800">Data-Driven Business Transformation (Splunk):</strong> I don't just change technology; I deliver business outcomes. I led data initiatives that reduced the quarter-end close from 20 to 5 days. I focus on developing lean business cases and delivering measurable ROI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white py-8">
+        <div class="container mx-auto text-center text-slate-400">
+            <p>&copy; 2025 Ashu Dhall. All rights reserved.</p>
+            <p>Strategic vision prepared for Zayo.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionContainer = document.getElementById('accordion-container');
+
+            if(accordionContainer) {
+                const accordionButtons = accordionContainer.querySelectorAll('.accordion-button');
+
+                accordionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = button.nextElementSibling;
+                        const icon = button.querySelector('svg');
+                        const isOpen = content.classList.contains('open');
+
+                        // Close all other accordions first
+                        accordionButtons.forEach(otherButton => {
+                            if (otherButton !== button) {
+                                otherButton.nextElementSibling.classList.remove('open');
+                                otherButton.querySelector('svg').classList.remove('rotate-180');
+                            }
+                        });
+
+                        // Then toggle the clicked one
+                        if (!isOpen) {
+                            content.classList.add('open');
+                            icon.classList.add('rotate-180');
+                        } else {
+                            content.classList.remove('open');
+                            icon.classList.remove('rotate-180');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
